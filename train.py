@@ -19,6 +19,7 @@ import nltk
 from nltk.corpus import stopwords
 import string
 import pickle
+import shelve
 
 # Read the data
 df = pd.read_csv('UpdatedResumeDataSet.csv')
@@ -69,6 +70,9 @@ print("\n Classification report for classifier %s:\n%s\n" % (clf, metrics.classi
 pickle.dump(clf, open('model.pkl','wb'))
 pickle.dump(word_vectorizer, open('vectorizer.pkl','wb'))
 
+'''with shelve.open('rs_modelobjects.db') as db:
+    db['model'] = clf
+    db['vectorizer'] = word_vectorizer'''
 
 
 
